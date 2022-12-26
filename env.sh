@@ -1,6 +1,10 @@
 #!/bin/bash
-echo write desired env name into prompt:
-read envName
-echo creating conda env named $envName
+while getopts n: flag
+do
+    case "${flag}" in
+        n) name=${OPTARG};;    
+    esac
+done
 
-conda create --name $envName --file spec-file.txt
+
+conda create --name $name --file spec-file.txt

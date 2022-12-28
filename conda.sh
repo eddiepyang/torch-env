@@ -1,11 +1,18 @@
 #!/bin/bash
 
+if [ -z "$2" ]
+then
+      echo "must add path flag with -p"; exit 1;
+fi
+
 while getopts p: flag
 do
     case "${flag}" in
-        p) path=${OPTARG};;     
+        p) path=${OPTARG};;    
+	    *) echo "must add path flag with -p"; exit 1;	
     esac
 done
+
 echo "path: $path";
 
 mkdir -p /${path}

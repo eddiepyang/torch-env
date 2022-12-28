@@ -18,4 +18,4 @@ RUN ./conda.sh -p ${conda}
 ENV PATH /${conda}/bin:$PATH
 RUN source /${conda}/etc/profile.d/conda.sh && conda init bash
 
-RUN ./env.sh -n ${env} 
+#RUN ./env.sh -n ${env} 

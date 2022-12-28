@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+function install () {
+    mkdir -p /${path}
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh -O /${path}/miniconda.sh
+    bash /${path}/miniconda.sh -b -f -p /${path}
+    rm -rf /${path}/miniconda.sh
+}
+
 if [ -z "$2" ]
 then
       echo "must add path flag with -p"; exit 1;
@@ -13,9 +21,12 @@ do
     esac
 done
 
-echo "path: $path";
+echo "using path: $path";
 
-mkdir -p /${path}
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /${path}/miniconda.sh
-bash /${path}/miniconda.sh -b -f -p /${path}
-rm -rf /${path}/miniconda.sh
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        OS="Linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+        OS="MacOSX"
+fi
+
+install

@@ -16,8 +16,8 @@ fi
 while getopts p: flag
 do
     case "${flag}" in
-        p) path=${OPTARG};;    
-	    *) echo "must add path flag with -p"; exit 1;	
+        p) path=${OPTARG};;
+        *) echo "must add path flag with -p"; exit 1;	
     esac
 done
 

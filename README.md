@@ -1,4 +1,4 @@
-Builds a cuda torch based env for transformers for linux, may work for macOS(cpu only) as well:  
+Builds a cuda torch based env for transformers for linux, may work for macOS (cpu only) as well:  
 
 ```
 chmod +x conda.sh env.sh

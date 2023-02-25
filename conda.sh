@@ -1,9 +1,10 @@
 #!/bin/bash
 
+ARCH=$(uname -m)
 
 function install () {
     mkdir -p /${path}
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-x86_64.sh -O /${path}/miniconda.sh
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-${ARCH}.sh -O /${path}/miniconda.sh
     bash /${path}/miniconda.sh -b -f -p /${path}
     rm -rf /${path}/miniconda.sh
 }
@@ -22,6 +23,7 @@ do
 done
 
 echo "using path: $path";
+echo "detected architecture: $ARCH"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         OS="Linux"

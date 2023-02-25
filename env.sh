@@ -7,4 +7,4 @@ do
 done
 
 
-conda create --name $name --file spec-file.txt
+conda create --name $name --file linux-spec-file.txt

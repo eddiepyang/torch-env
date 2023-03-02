@@ -1,10 +1,11 @@
 #!/bin/bash
-while getopts n: flag
+while getopts :n:f: flag
 do
     case "${flag}" in
-        n) name=${OPTARG};;    
+        n) ENV_NAME=${OPTARG} ;;
+        f) ENV_FILE=${OPTARG} ;;   
     esac
 done
 
 
-conda create --name $name --file linux-spec-file.txt
+conda env create -f $ENV_FILE -n $ENV_NAME

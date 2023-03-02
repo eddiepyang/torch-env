@@ -1,23 +1,19 @@
 FROM amd64/ubuntu:latest
 
-ENV conda="miniconda"
-ENV env="torch"
+ENV CONDA="/miniconda" ENV_NAME="torch" ENV_FILE="torch-env.yaml"
 
+SHELL ["bash", "-c"] 
 
-SHELL ["/bin/bash", "-c"] 
-
-COPY *.sh /app/
-COPY *.txt /app/
+COPY *.sh *.txt *.yaml /app/
 
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y wget
-RUN chmod +x conda.sh \
+    && apt-get install -y wget \
+    && chmod +x conda.sh \
     && chmod +x env.sh
 
-RUN ./conda.sh -p ${conda}
-ENV PATH /${conda}/bin:$PATH
-RUN source /${conda}/etc/profile.d/conda.sh && conda init bash
+RUN ./conda.sh -p ${CONDA}
 
-RUN ./env.sh -n ${env} 
+ENV PATH ${CONDA}/bin:$PATH
+RUN ./env.sh -n ${ENV_NAME} -f ${ENV_FILE}

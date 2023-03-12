@@ -5,5 +5,5 @@ Miniconda is the system environment manager being used as it allows for multiple
 The scripts can be used separately with `conda.sh` installing miniconda and env.sh installing pytorch and cuda files.
 ```
 chmod +x conda.sh env.sh. 
-./conda.sh -p ${path} && ./env.sh -n ${env}
+./conda.sh -p $PATH && ./env.sh -f $ENV_FILE -n $ENV_NAME
 ```

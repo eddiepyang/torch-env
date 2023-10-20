@@ -7,5 +7,7 @@ do
     esac
 done
 
-
-conda env create -f $ENV_FILE -n $ENV_NAME
+if [ -z ${x} ]
+    then conda env create -f $ENV_FILE -n $ENV_NAME
+    else conda env create -f $ENV_FILE
+fi

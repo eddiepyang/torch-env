@@ -1,6 +1,7 @@
 FROM amd64/ubuntu:latest
 
-ENV CONDA="miniconda" ENV_NAME="test" ENV_FILE="torch-env.yaml"
+ENV CONDA="miniconda" ENV_FILE="torch-env.yaml"
+ENV ENV_NAME="test"
 
 SHELL ["bash", "-c"] 
 
@@ -17,7 +18,6 @@ RUN ./conda.sh -p ${CONDA}
 ENV PATH ${CONDA}/bin:$PATH
 RUN ./env.sh -n ${ENV_NAME} -f ${ENV_FILE}
 
-RUN ${CONDA}/envs/${ENV_NAME}/bin/python -c "import torch; x = torch.rand(5, 3); print(x)"
+RUN conda run -n ${ENV_NAME} python -c "import torch; x = torch.rand(5, 3); print(x)"
 
-ENTRYPOINT ["/bin/bash"]
-
+ENTRYPOINT ["/bin/bash", "--login"]

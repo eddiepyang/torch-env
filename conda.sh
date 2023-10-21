@@ -3,10 +3,10 @@
 ARCH=$(uname -m)
 
 function install () {
-    mkdir -p ${CONDA_PATH}
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-${OS}-${ARCH}.sh -O ${CONDA_PATH}/miniconda.sh
-    bash ${CONDA_PATH}/miniconda.sh -b -f -p ${CONDA_PATH}
-    rm -rf ${CONDA_PATH}/miniconda.sh
+    mkdir -p "${CONDA_PATH}"
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-"${OS}"-"${ARCH}".sh -O "${CONDA_PATH}"/miniconda.sh
+    bash "${CONDA_PATH}"/miniconda.sh -b -f -p "${CONDA_PATH}"
+    rm -rf "${CONDA_PATH}"/miniconda.sh
 }
 
 if [ -z "$2" ]
